@@ -23,27 +23,27 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="Display" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0" Grid.RowSpan="1" Text="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="30" TextAlignment="Right" IsReadOnly="True" Padding="10,0,10,0"/>
+        <TextBox x:Name="Display" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0" Grid.RowSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="30" TextAlignment="Right" IsReadOnly="True" Padding="10,0,10,0" Text="{Binding Display, Mode=OneWay}"/>
 
-        <Button x:Name="Btn_0" Click="ClickNumber" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Content="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_1" Click="ClickNumber" Grid.Column="0" Grid.Row="3" Content="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_2" Click="ClickNumber" Grid.Column="1" Grid.Row="3" Content="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_3" Click="ClickNumber" Grid.Column="2" Grid.Row="3" Content="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_4" Click="ClickNumber" Grid.Column="0" Grid.Row="2" Content="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_5" Click="ClickNumber" Grid.Column="1" Grid.Row="2" Content="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_6" Click="ClickNumber" Grid.Column="2" Grid.Row="2" Content="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_7" Click="ClickNumber" Grid.Column="0" Grid.Row="1" Content="7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_8" Click="ClickNumber" Grid.Column="1" Grid.Row="1" Content="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_9" Click="ClickNumber" Grid.Column="2" Grid.Row="1" Content="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Content="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="0" Grid.Row="3" Content="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="1" Grid.Row="3" Content="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="2" Grid.Row="3" Content="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="0" Grid.Row="2" Content="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="1" Grid.Row="2" Content="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="2" Grid.Row="2" Content="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="0" Grid.Row="1" Content="7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="1" Grid.Row="1" Content="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="2" Grid.Row="1" Content="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-        <Button x:Name="Btn_Divide" Click="ClickOperator" Grid.Column="3" Grid.Row="1" Content="/" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_Substract" Click="ClickOperator" Grid.Column="3" Grid.Row="2" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_Multiply" Click="ClickOperator" Grid.Column="3" Grid.Row="3" Content="*" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_Add" Click="ClickOperator" Grid.Column="4" Grid.RowSpan="2" Grid.Row="1" Content="+" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickOperator" Grid.Column="3" Grid.Row="1" Content="/" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickOperator" Grid.Column="3" Grid.Row="2" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickOperator" Grid.Column="3" Grid.Row="3" Content="*" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickOperator" Grid.Column="4" Grid.RowSpan="2" Grid.Row="1" Content="+" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-        <Button x:Name="Btn_Comma" Click="ClickNumber" Grid.Column="2" Grid.Row="4" Content="," HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_Clear" Click="ClickClear" Grid.Column="3" Grid.Row="4" Content="C" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button x:Name="Btn_Result" Click="ClickResult" Grid.Column="4" Grid.RowSpan="2" Grid.Row="3" Content="=" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickNumber" Grid.Column="2" Grid.Row="4" Content="," HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickClear" Grid.Column="3" Grid.Row="4" Content="C" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Click="ClickResult" Grid.Column="4" Grid.RowSpan="2" Grid.Row="3" Content="=" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
     </Grid>
 </Window>

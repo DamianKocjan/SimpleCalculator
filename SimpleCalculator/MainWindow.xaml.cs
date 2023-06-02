@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,56 +21,49 @@ namespace SimpleCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private String _displayText = "";
-        private TextBox _displayTextBox;
+        private DisplayData displayData;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _displayTextBox = (TextBox)FindName("Display");
-            _displayTextBox.Text = "0";
+            displayData = new DisplayData();
+            DataContext = displayData;
         }
 
-        private void UpdateDisplay()
-        {
-            _displayTextBox.Text = _displayText;
-        }
 
         private void Calculate()
         {
-            if (_displayText.Length == 0)
+            if (displayData.Display.Length == 0)
             {
                 return;
             }
 
-            if (_displayText.Contains('+'))
+            if (displayData.Display.Contains('+'))
             {
-                String[] numbers = _displayText.Split('+');
-                _displayText = (Convert.ToDouble(numbers[0]) + Convert.ToDouble(numbers[1])).ToString();
+                string[] numbers = displayData.Display.Split('+');
+                displayData.Display = (Convert.ToDouble(numbers[0]) + Convert.ToDouble(numbers[1])).ToString();
             }
-            else if (_displayText.Contains('-'))
+            else if (displayData.Display.Contains('-'))
             {
-                String[] numbers = _displayText.Split('-');
-                _displayText = (Convert.ToDouble(numbers[0]) - Convert.ToDouble(numbers[1])).ToString();
+                string[] numbers = displayData.Display.Split('-');
+                displayData.Display = (Convert.ToDouble(numbers[0]) - Convert.ToDouble(numbers[1])).ToString();
             }
-            else if (_displayText.Contains('*'))
+            else if (displayData.Display.Contains('*'))
             {
-                String[] numbers = _displayText.Split('*');
-                _displayText = (Convert.ToDouble(numbers[0]) * Convert.ToDouble(numbers[1])).ToString();
+                string[] numbers = displayData.Display.Split('*');
+                displayData.Display = (Convert.ToDouble(numbers[0]) * Convert.ToDouble(numbers[1])).ToString();
             }
-            else if (_displayText.Contains('/'))
+            else if (displayData.Display.Contains('/'))
             {
-                String[] numbers = _displayText.Split('/');
-                _displayText = (Convert.ToDouble(numbers[0]) / Convert.ToDouble(numbers[1])).ToString();
-            }
-
-            if (_displayText.EndsWith(".0"))
-            {
-                _displayText = _displayText.Substring(0, _displayText.Length - 2);
+                string[] numbers = displayData.Display.Split('/');
+                displayData.Display = (Convert.ToDouble(numbers[0]) / Convert.ToDouble(numbers[1])).ToString();
             }
 
-            UpdateDisplay();
+            if (displayData.Display.EndsWith(".0"))
+            {
+                displayData.Display = displayData.Display.Substring(0, displayData.Display.Length - 2);
+            }
         }
 
         private void ClickResult(object sender, RoutedEventArgs e)
@@ -79,33 +73,60 @@ namespace SimpleCalculator
 
         private void ClickClear(object sender, RoutedEventArgs e)
         {
-            _displayText = "0";
-            UpdateDisplay();
+            displayData.Display = "0";
         }
 
         private void ClickNumber(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            _displayText += button.Content.ToString();
-            UpdateDisplay();
+            displayData.Display += button.Content.ToString();
         }
 
         private void ClickOperator(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
 
-            if (_displayText.Length == 0)
+            if (displayData.Display.Length == 0)
             {
                 return;
             }
 
-            if (_displayText.Contains('+') || _displayText.Contains('-') || _displayText.Contains('*') || _displayText.Contains('/'))
+            if (displayData.Display.Contains('+') || displayData.Display.Contains('-') || displayData.Display.Contains('*') || displayData.Display.Contains('/'))
             {
                 Calculate();
             }
 
-            _displayText += button.Content.ToString();
-            UpdateDisplay();
+            displayData.Display += button.Content.ToString();
+        }
+    }
+
+    class DisplayData : INotifyPropertyChanged
+    {
+        private string display;
+
+        public DisplayData() {
+            display = "0";
+        }
+
+        public String Display
+        {
+            get { return display; }
+            set
+            {
+                display = value;
+                OnPropertyChanged("Display");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string info)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(info));
+            }
         }
     }
 }
